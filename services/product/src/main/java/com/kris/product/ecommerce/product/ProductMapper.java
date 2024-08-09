@@ -1,7 +1,9 @@
 package com.kris.product.ecommerce.product;
 
 import com.kris.product.ecommerce.category.Category;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProductMapper {
 
     public Product toProduct(ProductRequest request) {

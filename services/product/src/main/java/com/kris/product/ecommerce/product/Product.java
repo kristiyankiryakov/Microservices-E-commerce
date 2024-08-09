@@ -1,11 +1,12 @@
 package com.kris.product.ecommerce.product;
 
 import com.kris.product.ecommerce.category.Category;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.*;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
 
 import java.math.BigDecimal;
 
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
 @Builder
 @Getter
 @Setter
+@Entity
 public class Product {
 
     @Id
