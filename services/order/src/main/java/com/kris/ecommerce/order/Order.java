@@ -3,6 +3,7 @@ package com.kris.ecommerce.order;
 import com.kris.ecommerce.orderline.OrderLine;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -33,8 +34,11 @@ public class Order {
     private String customerId;
     @OneToMany(mappedBy = "order")
     private List<OrderLine> orderLines;
+
+    @CreatedDate
     @Column(updatable = false, nullable = false)
     private LocalDateTime createdDate;
+
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;

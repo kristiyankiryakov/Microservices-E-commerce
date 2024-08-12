@@ -2,6 +2,7 @@ package com.kris.ecommerce.payment;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -29,8 +30,10 @@ public class Payment {
 
     private Integer orderId;
 
+    @CreatedDate
     @Column(updatable = false, nullable = false)
     private LocalDateTime createdDate;
+
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;

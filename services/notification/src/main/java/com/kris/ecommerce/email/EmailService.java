@@ -39,7 +39,7 @@ public class EmailService {
     ) throws MessagingException {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, MULTIPART_MODE_RELATED, UTF_8.name());
-        messageHelper.setFrom("emineo@abv.bg");
+        messageHelper.setFrom("contact@aliboucoding.com");
         final String templateName = PAYMENT_CONFIRMATION.getTemplate();
 
         Map<String, Object> variables = new HashMap<>();
@@ -53,7 +53,6 @@ public class EmailService {
         try {
             String htmlTemplate = templateEngine.process(templateName, context);
             messageHelper.setText(htmlTemplate, true);
-
             messageHelper.setTo(destinationEmail);
             mailSender.send(mimeMessage);
             log.info(String.format("INFO - Email successfully sent to %s with template %S", destinationEmail, templateName));
@@ -85,7 +84,7 @@ public class EmailService {
         context.setVariables(variables);
         messageHelper.setSubject(ORDER_CONFIRMATION.getSubject());
         try {
-            String htmlTemplate = templateEngine.process(templateName, contxt);
+            String htmlTemplate = templateEngine.process(templateName, context);
             messageHelper.setText(htmlTemplate, true);
 
             messageHelper.setTo(destinationEmail);
