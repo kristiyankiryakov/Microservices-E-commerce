@@ -1,14 +1,16 @@
+server:
+  port: 8070
 spring:
   datasource:
+    driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/order
     username: kris
     password: kris
-    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: create
       database: postgresql
-      database-platform: org.hibernate.dialect.PostgresSQLDialect
   kafka:
     producer:
       bootstrap-servers: localhost:9092
@@ -16,8 +18,7 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
         spring.json.type.mapping: orderConfirmation:com.kris.ecommerce.kafka.OrderConfirmation
-server:
-  port: 8070
+
 
 application:
   config:
